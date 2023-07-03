@@ -1,0 +1,24 @@
+{
+  "name": "learnery-backend",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Web2 backend of learnery",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "learnery",
+  "license": "MIT",
+  "dependencies": {
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/learnery-engine/learnery-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/learnery-engine/learnery-backend/issues"
+  },
+  "homepage": "https://github.com/learnery-engine/learnery-backend"
+}
