@@ -30,6 +30,7 @@ jobs:
         with:
           cache: 'pnpm'
           node-version: 20
+          check-latest: true
 
       - name: Install dependencies
         run: pnpm install
