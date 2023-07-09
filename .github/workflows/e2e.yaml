@@ -1,0 +1,59 @@
+name: E2E
+
+on:
+  push:
+    branches:
+      - main
+#      - "*"
+#      - "**"
+    tags:
+      - "*"
+      - "**"
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  envfile: ${{secrets.ENV}}
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.6.6
+
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'pnpm'
+          node-version: 19
+          check-latest: true
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Write environment
+        run: |
+          echo $envfile > .env
+          sed -i 's/ /\n/g' .env
+          source .env
+
+      - name: Run tests
+        run: pnpm run test
+
+      - name: E2E
+        run: pnpm test:e2e
