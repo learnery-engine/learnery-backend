@@ -1,4 +1,4 @@
-name: Build and Test
+name: E2E
 
 on:
   push:
@@ -16,6 +16,9 @@ on:
 
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-and-test:
