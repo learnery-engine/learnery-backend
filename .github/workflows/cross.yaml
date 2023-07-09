@@ -57,7 +57,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Write environment
+      - name: Write environment #TODO: add coachroach ssl certificate
         run: |
           echo $envfile > .env
           sed -i 's/ /\n/g' .env
