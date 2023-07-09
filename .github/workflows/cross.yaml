@@ -19,6 +19,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  envfile: ${{secrets.ENV}}
+
 jobs:
   build-and-test:
     timeout-minutes: 10
@@ -53,6 +56,12 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Write environment
+        run: |
+          echo $envfile > .env
+          sed -i 's/ /\n/g' .env
+          source .env
 
       - name: Run tests for ${{runner.os}}
         run: pnpm run test
