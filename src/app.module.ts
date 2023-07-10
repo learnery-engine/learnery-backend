@@ -13,13 +13,18 @@ let mode= process.env.MODE
 let envFile=".env"
 
 switch (mode){
-  case "test":  envFile=".env.test"
+  case "test":
+    envFile=".env.test"
+    break
+  default:
+    mode = "dev"
+    envFile=".env.local"
 }
 @Module({
   imports: [
     PrismaModule,
     ConfigModule.forRoot({
-    envFilePath: [envFile, ".env", ".env.test",".env.prod"],
+    envFilePath: [envFile,".env.local", ".env.test",".env.prod",".env"],
     isGlobal: true,
     cache: true,
     validationSchema: Joi.object({
