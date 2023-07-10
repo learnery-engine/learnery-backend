@@ -3,10 +3,11 @@ import { AppModule } from "../src/app.module"
 import { HttpStatus, INestApplication, ValidationPipe } from "@nestjs/common"
 import * as pactum from "pactum"
 import { ConfigService } from "@nestjs/config"
+import { PrismaService } from "../src/prisma/prisma.service";
 
 describe("App e2e", () => {
   let app: INestApplication
-
+  let prisma: PrismaService
   let url: string
   beforeAll(async () => {
     const ModuleRef = await Test.createTestingModule({
@@ -15,7 +16,8 @@ describe("App e2e", () => {
     app = ModuleRef.createNestApplication()
     app.useGlobalPipes(new ValidationPipe({ whitelist: true }))
     await app.init()
-    const port = app.get(ConfigService).get("PORT")
+    prisma = app.get<PrismaService>(PrismaService)
+    const port = app.get<ConfigService>(ConfigService).get("PORT")
     url = `http://localhost:${port}`
     await app.listen(port)
     pactum.request.setBaseUrl(url)
@@ -24,6 +26,7 @@ describe("App e2e", () => {
 
   afterAll(async () => {
     await app.close()
+    await prisma.cleanDb()
   })
 
   describe("Auth", function () {
