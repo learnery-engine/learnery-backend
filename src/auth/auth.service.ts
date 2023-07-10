@@ -59,7 +59,7 @@ export class AuthService {
     return this.signToken(user.id, user.email)
   }
 
-  async signToken(userId: bigint, email: string) {
+  async signToken(userId: number, email: string) {
     const payload = {
       sub: userId,
       email,
