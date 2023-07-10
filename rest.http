@@ -1,6 +1,19 @@
+POST {{u}}/auth/signup
+Content-Type: application/x-www-form-urlencoded
+
+email=hiro@gmail.com&password=Hiro*2412412###@##P
+
+
+###
+
+POST {{u}}/auth/signin
+Content-Type: application/x-www-form-urlencoded
+
+email=hiro@gmail.com&password=Hiro*2412412###@##P
+
+###
 GET {{u}}
 Accept: application/json
 
 ###
-
 
