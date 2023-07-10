@@ -3,7 +3,8 @@ import { AppModule } from "../src/app.module"
 import { HttpStatus, INestApplication, ValidationPipe } from "@nestjs/common"
 import * as pactum from "pactum"
 import { ConfigService } from "@nestjs/config"
-import { PrismaService } from "../src/prisma/prisma.service";
+import { PrismaService } from '../src/prisma/prisma.service'
+import { AuthDto } from '../src/auth/dto'
 
 describe("App e2e", () => {
   let app: INestApplication
@@ -30,13 +31,72 @@ describe("App e2e", () => {
   })
 
   describe("Auth", function () {
-    describe("Sign up", () => {
-      it.todo("sign up the user") //TODO:
-    })
-    describe("Sign in", () => {
-      it.todo("sign the user") //TODO:
-    })
-  })
+    const dto: AuthDto = {
+      email: 'hiro_tests@gmail.com',
+      password: 'testing@rQfAPjfVsreWGz2',
+    }
+    describe('Sign up', () => {
+      it('should signup', () => {
+        return pactum.spec().post(`${url}/auth/signup`).withBody(dto).expectStatus(HttpStatus.CREATED).inspect()
+      })
+      it('should throw if email empty', () => {
+        return pactum
+          .spec()
+          .post('/auth/signup')
+          .withBody({
+            password: dto.password,
+          })
+          .expectStatus(400)
+          .inspect()
+      })
+      it('should throw if password empty', () => {
+        return pactum
+          .spec()
+          .post('/auth/signup')
+          .withBody({
+            email: dto.email,
+          })
+          .expectStatus(400)
+          .inspect()
+      })
+      it('should throw if not strang  password', () => {
+        return pactum
+          .spec()
+          .post('/auth/signup')
+          .withBody({
+            email: dto.email,
+            password: '123',
+          })
+          .expectStatus(400)
+          .inspect()
+      })
+    })   describe("Sign in", () => {
+      it("should throw if password empty", () => {
+        return pactum
+          .spec()
+          .post("/auth/signin")
+          .withBody({
+            email: dto.email,
+         })
+          .expectStatus(400)
+          .inspect()
+      })
+ ;     it(";should throw if email empty", () => {
+        return pactum
+          .spec()
+          .post("/auth/signin")
+          .withBody({
+            password: dto.password,
+         })
+          .expectStatus(400)
+          .inspect()
+      })
+ ;     it(";should signin", () => {
+        return pactum.spec().post("/auth/signin").withBody(dto).expectStatus(200).stores("userToken", "access_token")
+      })
+ ;   })
+  };)
+
 
   describe("Course",()=>{
     it.todo("CRUD Courses") //TODO:
