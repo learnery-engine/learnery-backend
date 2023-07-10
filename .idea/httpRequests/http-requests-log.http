@@ -1,0 +1,192 @@
+POST http://localhost:1606/auth/signup
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 49
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+email=hiro@gmail.com&password=Hiro*2412412###@##P
+
+<> 2023-07-10T095851.201.json
+
+###
+
+POST http://localhost:1606/auth/signin
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 49
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+email=hiro@gmail.com&password=Hiro*2412412###@##P
+
+<> 2023-07-10T095848.403.json
+
+###
+
+POST http://localhost:1606/auth/signup
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 56
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+email=hiro1122112@gmail.com&password=Hiro*2412412###@##P
+
+<> 2023-07-10T095841.201.json
+
+###
+
+POST http://localhost:1606/auth/signup
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 55
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+email=hiro122112@gmail.com&password=Hiro*2412412###@##P
+
+<> 2023-07-10T094929.500.json
+
+###
+
+POST http://localhost:1606/auth/signup
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 53
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+email=hiro1222@gmail.com&password=Hiro*2412412###@##P
+
+<> 2023-07-10T094901.500.json
+
+###
+
+POST http://localhost:1606/auth/signup
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 50
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+email=hiro1@gmail.com&password=Hiro*2412412###@##P
+
+<> 2023-07-10T094850.403.json
+
+###
+
+POST http://localhost:1606/auth/signup
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 50
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+email=hiro1@gmail.com&password=Hiro*2412412###@##P
+
+<> 2023-07-10T094824.403.json
+
+###
+
+POST http://localhost:1606/auth/signup
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 50
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+email=hiro1@gmail.com&password=Hiro*2412412###@##P
+
+<> 2023-07-10T094751.500.json
+
+###
+
+POST http://localhost:1606/auth/signup
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 49
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+email=hiro@gmail.com&password=Hiro*2412412###@##P
+
+<> 2023-07-10T094746.403.json
+
+###
+
+POST http://localhost:1606/auth/signin
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 49
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+email=hiro@gmail.com&password=Hiro*2412412###@##P
+
+<> 2023-07-10T094726.500.json
+
+###
+
+POST http://localhost:1606/auth/signup
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 49
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+email=hiro@gmail.com&password=Hiro*2412412###@##P
+
+<> 2023-07-10T094650.403.json
+
+###
+
+POST http://localhost:1606/auth/signup
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 49
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+email=hiro@gmail.com&password=Hiro*2412412###@##P
+
+<> 2023-07-10T094328.403.json
+
+###
+
+POST http://localhost:1606/auth/signup
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 49
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+email=hiro@gmail.com&password=Hiro*2412412###@##P
+
+<> 2023-07-10T093851.500.json
+
+###
+
+POST http://localhost:1606/auth/signup
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 49
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+email=hiro@gmail.com&password=Hiro*2412412###@##P
+
+<> 2023-07-10T085325.500.json
+
+###
+
+GET http://localhost:1606
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.7)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-07-10T061158.200.html
+
+###
+

@@ -55,7 +55,6 @@ export class AuthService {
 
     if (!pwMatches) throw new ForbiddenException("invalid credentials")
 
-    // @ts-ignore
     return this.signToken(user.id, user.email)
   }
 
