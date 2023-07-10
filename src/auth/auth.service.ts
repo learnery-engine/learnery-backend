@@ -67,7 +67,7 @@ export class AuthService {
 
     return {
       access_token: await this.jwt.signAsync(payload, {
-        expiresIn: "1hr",
+        expiresIn: "1hr", //TODO:
         secret: secret,
       }),
     }
