@@ -6,9 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider   = "postgresql"
-  url        = env("DATABASE_URL")
-  extensions = [uuidOssp(map: "uuid-ossp")]
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+  // extensions = [uuidOssp(map: "uuid-ossp")]
 }
 
 // https://www.prisma.io/docs/concepts/components/prisma-schema/data-sources#securing-database-connections
