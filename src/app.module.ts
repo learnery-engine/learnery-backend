@@ -5,6 +5,7 @@ import { ConfigModule } from "@nestjs/config";
 import { AuthModule } from './auth/auth.module';
 import { PrismaModule } from './prisma/prisma.module';
 import * as Joi from "joi";
+import { string } from "joi";
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import * as Joi from "joi";
     validationSchema: Joi.object({
       MODE: Joi.string().valid("development", "production", "testing").default("development"),
       PORT: Joi.number().default(1606),
+      JWT_SECRET: Joi.string()
     }),
   }),
     AuthModule,
