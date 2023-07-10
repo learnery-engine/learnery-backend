@@ -8,11 +8,17 @@ import * as Joi from "joi";
 import { string } from "joi";
 import { UserModule } from './user/user.module';
 
+let mode= process.env.MODE
+let envFile=".env"
+if( mode==="test"){
+  mode="test"
+  envFile=".env.test"
+}
 @Module({
   imports: [
     PrismaModule,
     ConfigModule.forRoot({
-    envFilePath: [".env-local", ".env"],
+    envFilePath: [envFile, ".env", ".env.test",".env.prod"],
     isGlobal: true,
     cache: true,
     validationSchema: Joi.object({
