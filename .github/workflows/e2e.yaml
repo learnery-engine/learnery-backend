@@ -59,8 +59,8 @@ jobs:
       - name: Prisma Migration
         run: |
           echo "Migrating DB"
-          prisma migrate deploy
-          prisma migrate reset
+          npx prisma migrate deploy
+          npx prisma migrate reset
 
       - name: Run tests
         run: pnpm run test
