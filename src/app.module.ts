@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from "@nestjs/config";
-import Joi from "joi";
+import * as Joi from "joi";
 
 @Module({
   imports: [
@@ -10,10 +10,10 @@ import Joi from "joi";
     envFilePath: [".env-local", ".env"],
     isGlobal: true,
     cache: true,
-    // validationSchema: Joi.object({
-    //   MODE: Joi.string().valid("development", "production", "testing").default("development"),
-    //   PORT: Joi.number().default(1606),
-    // }),
+    validationSchema: Joi.object({
+      MODE: Joi.string().valid("development", "production", "testing").default("development"),
+      PORT: Joi.number().default(1606),
+    }),
   }),
   ],
   controllers: [AppController],
