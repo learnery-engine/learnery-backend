@@ -7,12 +7,13 @@ import { PrismaModule } from './prisma/prisma.module';
 import * as Joi from "joi";
 import { string } from "joi";
 import { UserModule } from './user/user.module';
+import { switchMapTo } from "rxjs";
 
 let mode= process.env.MODE
 let envFile=".env"
-if( mode==="test"){
-  mode="test"
-  envFile=".env.test"
+
+switch (mode){
+  case "test":  envFile=".env.test"
 }
 @Module({
   imports: [
