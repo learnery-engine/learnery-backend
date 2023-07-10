@@ -54,6 +54,9 @@ jobs:
           architecture: ${{ matrix.architecture }}
           check-latest: true
 
+      - name: Build
+        run: pnpm run build
+
       - name: Install dependencies
         run: pnpm install
 
