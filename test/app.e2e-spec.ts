@@ -5,6 +5,7 @@ import * as pactum from "pactum"
 import { ConfigService } from "@nestjs/config"
 import { PrismaService } from "../src/prisma/prisma.service";
 import { AuthDto } from "../src/auth/dto";
+import { EditUserDto } from "../src/user/dto";
 
 describe("App e2e", () => {
   let app: INestApplication
@@ -97,6 +98,54 @@ describe("App e2e", () => {
       })
       it("should signin", () => {
         return pactum.spec().post("/auth/signin").withBody(dto).expectStatus(200).stores("userToken", "access_token")
+      })
+    })
+  })
+
+  describe("User", () => {
+    describe("Get me", () => {
+      it("should fail without header", () => {
+        return pactum.spec().get("/users/me").expectStatus(401)
+      })
+
+      it("should get current user", () => {
+        return pactum
+          .spec()
+          .withHeaders({
+            Authorization: `Bearer $S{userToken}`,
+          })
+          .get("/users/me")
+          .expectStatus(200)
+      })
+    })
+    describe("Edit User", () => {
+      const dto: EditUserDto = {
+        firstName: "Hiro",
+        lastName: "Hamada",
+      }
+      it("should edit user", () => {
+        return pactum
+          .spec()
+          .withHeaders({
+            Authorization: `Bearer $S{userToken}`,
+          })
+          .patch("/users")
+          .withBody(dto)
+          .expectStatus(200)
+          .expectBodyContains(dto.firstName)
+          .expectBodyContains(dto.lastName)
+      })
+    })
+
+    describe("Delete User", () => {
+      it("should delete current user", () => {
+        return pactum
+          .spec()
+          .withHeaders({
+            Authorization: `Bearer $S{userToken}`,
+          })
+          .delete("/users")
+          .expectStatus(HttpStatus.OK)
       })
     })
   })
