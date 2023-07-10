@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { PrismaModule } from './prisma/prisma.module';
 import * as Joi from "joi";
 import { string } from "joi";
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { string } from "joi";
     }),
   }),
     AuthModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
