@@ -1,3 +1,18 @@
+PATCH {{u}}/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiaGlyb0BnbWFpbC5jb20iLCJpYXQiOjE2ODg5Njk3NzQsImV4cCI6MTY4ODk3MzM3NH0.wiYwslhhjB9hZBeTnmArTXybNmVhr4IEtaPp7Bs2A5Q
+
+{
+  "firstName": "Tadashi",
+  "lastName": "Hamada"
+}
+
+###
+GET {{u}}/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiaGlyb0BnbWFpbC5jb20iLCJpYXQiOjE2ODg5Njk3NzQsImV4cCI6MTY4ODk3MzM3NH0.wiYwslhhjB9hZBeTnmArTXybNmVhr4IEtaPp7Bs2A5Q
+Accept: application/json
+
+###
 POST {{u}}/auth/signin
 Content-Type: application/x-www-form-urlencoded
 

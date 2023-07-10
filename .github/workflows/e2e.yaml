@@ -60,7 +60,7 @@ jobs:
         run: |
           echo "Migrating DB"
           npx prisma migrate deploy
-          npx prisma migrate reset
+          npx prisma migrate reset --force
 
       - name: Run tests
         run: pnpm run test
