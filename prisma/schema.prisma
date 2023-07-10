@@ -13,9 +13,9 @@ datasource db {
 
 // https://www.prisma.io/docs/concepts/components/prisma-schema/data-sources#securing-database-connections
 model User {
-  id        BigInt   @id @default(autoincrement())
+  id        Int      @id @default(sequence(minValue: 1)) @db.Int2
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @default(now())
 
   email String @unique
   hash  String
