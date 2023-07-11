@@ -13,7 +13,7 @@ async function bootstrap() {
 
   const port = config.get('port') || 1606
   console.log(`App is running on ${port}`)
-  app.use(cookieParser(config.get('JWT_TOKEN')))
+  app.use(cookieParser(config.get('JWT_SECRET')))
   await app.listen(port)
 }
 bootstrap();
