@@ -1,18 +1,20 @@
-import { Injectable } from "@nestjs/common"
-import { PassportStrategy } from "@nestjs/passport"
-import { ExtractJwt, Strategy } from "passport-jwt"
-import { ConfigService } from "@nestjs/config"
-import { PrismaService } from "../../prisma/prisma.service"
+import { Injectable } from '@nestjs/common'
+import { PassportStrategy } from '@nestjs/passport'
+import { ExtractJwt, Strategy } from 'passport-jwt'
+import { ConfigService } from '@nestjs/config'
+import { PrismaService } from '../../prisma/prisma.service'
+import { Request as RequestType } from 'express'
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy, "jwt") {
+export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   private jwtConstants: any
 
   constructor(private config: ConfigService, private prisma: PrismaService) {
+    const mode = config.get('MODE')
     super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      ignoreExpiration: false,
-      secretOrKey: config.get("JWT_SECRET"),
+      jwtFromRequest: ExtractJwt.fromExtractors([JwtStrategy.extractJWTFromCookie, ExtractJwt.fromAuthHeaderAsBearerToken()]),
+      ignoreExpiration: mode != 'production',
+      secretOrKey: config.get('JWT_SECRET'),
     })
   }
 
@@ -27,4 +29,11 @@ export class JwtStrategy extends PassportStrategy(Strategy, "jwt") {
     return { userId: payload.sub, email: payload.email }
     // whatever is returned is appended to req.user
   }
+  private static extractJWTFromCookie(req: RequestType): string | null {
+    if (req.cookies && 'token' in req.cookies && req.cookies.user_token.length > 0) {
+      return req.cookies.token
+    }
+    return null
+  }
 }
+
