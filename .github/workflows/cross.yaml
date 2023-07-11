@@ -18,7 +18,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.head_ref }} || ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.head_ref }} || ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 env:
@@ -29,6 +29,8 @@ env:
 
 jobs:
   build-and-test:
+    concurrency: db-test
+
     timeout-minutes: 10
     runs-on: ${{ matrix.os }}
 
