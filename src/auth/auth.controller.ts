@@ -14,7 +14,7 @@ export class AuthController {
 
   @HttpCode(HttpStatus.OK)
   @Post('signin')
-  async signin(@Res() res: Response, @Body() dto: AuthDto) {
+  async signin(@Body() dto: AuthDto, @Res() res: Response) {
     const token = await this.authService.signin(dto)
 
     /*res.cookie('user',res.id, {
