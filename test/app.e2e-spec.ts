@@ -47,6 +47,10 @@ describe('App e2e', () => {
         .get('/health')
         .withRequestTimeout(10 * 1000) //cold start for db
         .expectStatus(HttpStatus.OK)
+        .expectJsonMatch('app', {
+          ok: true,
+          status: 'OK',
+        })
         .expectJsonLike({
           db: {
             ok: true,
