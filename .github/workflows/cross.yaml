@@ -20,7 +20,7 @@ concurrency:
 
 env:
   envfile: ${{secrets.ENV}}
-  MODE: testing
+  MODE: test
   NODE_ENV: testing
 
 

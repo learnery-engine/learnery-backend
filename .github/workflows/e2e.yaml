@@ -24,8 +24,8 @@ concurrency:
 
 env:
   envfile: ${{secrets.ENV}}
-  MODE: testing
-  NODE_ENV: testing
+  MODE: test
+  NODE_ENV: test
 
 jobs:
   build-and-test:
