@@ -19,7 +19,8 @@ describe('App e2e', () => {
     app.useGlobalPipes(new ValidationPipe({ whitelist: true }))
     await app.init()
     prisma = app.get<PrismaService>(PrismaService)
-    const port = app.get<ConfigService>(ConfigService).get('PORT')
+    const config = app.get<ConfigService>(ConfigService)
+    const port = config.get('PORT')
     url = `http://localhost:${port}`
     await app.listen(port)
     pactum.request.setBaseUrl(url)
@@ -153,7 +154,7 @@ describe('App e2e', () => {
         return pactum.spec().get('/users/me').expectStatus(401)
       })
 
-      it('should get current user', () => {
+      it('should get current user with Bearer Token', () => {
         return pactum
           .spec()
           .withHeaders({
@@ -161,6 +162,17 @@ describe('App e2e', () => {
           })
           .get('/users/me')
           .expectStatus(200)
+      })
+
+      it('should get current user with cookies', () => {
+        return (
+          pactum
+            .spec()
+            .get('/users/me')
+            // .withCookies("token",`$S{userToken}`) //FIXME
+            .expectStatus(HttpStatus.OK)
+            .inspect()
+        )
       })
     })
     describe('Edit User', () => {
@@ -171,9 +183,7 @@ describe('App e2e', () => {
       it('should edit user', () => {
         return pactum
           .spec()
-          .withHeaders({
-            Authorization: `Bearer $S{userToken}`,
-          })
+          .withBearerToken(`$S{userToken}`)
           .patch('/users')
           .withBody(dto)
           .expectStatus(200)

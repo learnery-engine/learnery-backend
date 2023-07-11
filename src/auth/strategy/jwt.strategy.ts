@@ -10,7 +10,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   private jwtConstants: any
 
   constructor(private config: ConfigService, private prisma: PrismaService) {
-    const mode = config.get('MODE')
+    const mode = config.get('MODE') || 'development'
     super({
       jwtFromRequest: ExtractJwt.fromExtractors([JwtStrategy.extractJWTFromCookie, ExtractJwt.fromAuthHeaderAsBearerToken()]),
       ignoreExpiration: mode == 'development' || mode == 'testing',
@@ -32,6 +32,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   private static extractJWTFromCookie(req: RequestType): string | null {
     const tokenField: string = 'token'
     console.log('cookie: extract')
+    console.debug(req.cookies)
     if (req.cookies && tokenField in req.cookies && req.cookies[tokenField].length > 0) {
       console.log('extracted cookie')
       return req.cookies.token
