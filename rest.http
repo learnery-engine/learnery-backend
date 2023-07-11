@@ -27,7 +27,7 @@ email=hiro@gmail.com&password=Hiro*2412412###@##P
 ###
 
 GET {{u}}/health
-
+Accept: application/json
 
 ###
 GET {{u}}
