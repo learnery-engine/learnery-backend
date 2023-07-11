@@ -1,15 +1,14 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ConfigModule } from "@nestjs/config";
-import { AuthModule } from './auth/auth.module';
-import { PrismaModule } from './prisma/prisma.module';
-import * as Joi from "joi";
-import { string } from "joi";
-import { UserModule } from './user/user.module';
-import { switchMapTo } from "rxjs";
+import { Module } from '@nestjs/common'
+import { AppController } from './app.controller'
+import { AppService } from './app.service'
+import { ConfigModule } from '@nestjs/config'
+import { AuthModule } from './auth/auth.module'
+import { PrismaModule } from './prisma/prisma.module'
+import * as Joi from 'joi'
+import { UserModule } from './user/user.module'
+import { KkController } from './kk/kk.controller'
 
-let mode= process.env.MODE
+let mode = process.env.MODE
 let envFile=".env"
 
 switch (mode){
@@ -36,7 +35,7 @@ switch (mode){
     AuthModule,
     UserModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, KkController],
   providers: [AppService],
 })
 export class AppModule {}
