@@ -31,6 +31,17 @@ describe("App e2e", () => {
     await prisma.cleanDb()
   })
 
+  describe("App",()=>{
+    it("home",()=>{
+      return pactum.spec().
+      get(`${url}`).
+      withRequestTimeout(10*1000). //due to cold start
+        expectStatus(HttpStatus.OK).
+          expectBodyContains({message: "app is up and running"}).
+        inspect()
+    })
+  })
+
   describe("Auth", function () {
     const dto: AuthDto = {
       email: "hiro_tests@gmail.com",
