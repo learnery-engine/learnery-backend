@@ -26,7 +26,7 @@ switch (mode){
     isGlobal: true,
     cache: true,
     validationSchema: Joi.object({
-      MODE: Joi.string().valid("development", "production", "testing").default("development"),
+      MODE: Joi.string().valid("dev", "prod", "test").default("dev"),
       PORT: Joi.number().default(1606),
       JWT_SECRET: Joi.string()
     }),
