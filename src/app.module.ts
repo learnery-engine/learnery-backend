@@ -14,6 +14,9 @@ switch (mode){
   case "test":
     envFile=".env.test"
     break
+  case "prod":
+    envFile = ".env.prod"
+    break
   default:
     mode = "dev"
     envFile=".env.local"
