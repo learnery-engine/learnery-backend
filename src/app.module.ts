@@ -6,7 +6,6 @@ import { AuthModule } from './auth/auth.module'
 import { PrismaModule } from './prisma/prisma.module'
 import * as Joi from 'joi'
 import { UserModule } from './user/user.module'
-import { KkController } from './kk/kk.controller'
 
 let mode = process.env.MODE
 let envFile=".env"
@@ -35,7 +34,7 @@ switch (mode){
     AuthModule,
     UserModule,
   ],
-  controllers: [AppController, KkController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
