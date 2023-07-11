@@ -77,6 +77,7 @@ describe('App e2e', () => {
           .withBody(dto)
           .withRequestTimeout(2 * 1000) //cold start
           .expectStatus(HttpStatus.CREATED)
+          .expectCookies('token')
           .inspect()
       })
 
