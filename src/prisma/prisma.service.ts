@@ -1,9 +1,10 @@
-import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common'
+import { Injectable, OnModuleInit } from '@nestjs/common'
 import { PrismaClient } from '@prisma/client'
 import { ConfigService } from '@nestjs/config'
 
 @Injectable()
-export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
+export class PrismaService extends PrismaClient implements OnModuleInit {
+  // FIXME doesn't work for e2e OnModuleDestroy{
   // https://docs.nestjs.com/fundamentals/lifecycle-events
 
   async onModuleInit() {
@@ -11,11 +12,11 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
     await this.$connect()
   }
 
-  async onModuleDestroy() {
-    console.warn(new Date(), 'disconnecting the database')
-    await this.$disconnect()
-    console.info(new Date(), 'disconnected database')
-  }
+  // async onModuleDestroy() {
+  //   console.warn(new Date(), 'disconnecting the database')
+  //   await this.$disconnect()
+  //   console.info(new Date(), 'disconnected database')
+  // }
   constructor(config: ConfigService) {
     const sslcert = '?sslcert=root.crt'
     //https://www.prisma.io/docs/concepts/database-connectors/postgresql#configuring-an-ssl-connection
