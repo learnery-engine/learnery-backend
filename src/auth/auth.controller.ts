@@ -24,11 +24,12 @@ export class AuthController {
       secure: true, // Cookie sent only over HTTPS if true
       signed: true,
     });*/
+
     res.cookie('jwt', token.access_token, {
       maxAge: 2 * 60 * 60,
-      httpOnly: true,
+      // httpOnly: true,
       secure: true,
-      signed: true,
+      // signed: true,
     })
 
     return token
