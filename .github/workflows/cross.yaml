@@ -73,7 +73,7 @@ jobs:
           source .env
 
       - name: Run tests for ${{runner.os}}
-        run: pnpm run test
+        run: pnpm test
 
       - name: E2E
         run: pnpm test:e2e
