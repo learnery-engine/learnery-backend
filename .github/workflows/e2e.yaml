@@ -26,6 +26,8 @@ concurrency:
 
 env:
   envfile: ${{secrets.ENV}}
+  MODE: testing
+  NODE_ENV: testing
 
 jobs:
   build-and-test:
@@ -48,7 +50,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm run build
+        run: pnpm build
 
       - name: Write environment
         run: |

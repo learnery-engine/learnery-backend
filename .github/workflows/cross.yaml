@@ -23,6 +23,9 @@ concurrency:
 
 env:
   envfile: ${{secrets.ENV}}
+  MODE: testing
+  NODE_ENV: testing
+
 
 jobs:
   build-and-test:
@@ -31,6 +34,7 @@ jobs:
 
     strategy:
       max-parallel: 1 #FIXME: race condition of db tearups by e2e and cross
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest] #,windows-latest]
         node_version: [16,18,19,20]
