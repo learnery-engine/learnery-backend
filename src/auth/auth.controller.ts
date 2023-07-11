@@ -17,14 +17,15 @@ export class AuthController {
   async signin(@Body() dto: AuthDto, @Res() res: Response) {
     const token = await this.authService.signin(dto)
 
-    /*    res.cookie('user', dto.email, {
+    /*    res.cookie('user', dto.email, { //TODO:
       // Set cookie options here (e.g., expiration, domain, path, etc.)
       maxAge: 3600000, // Cookie expiration time in milliseconds (1 hour)
       httpOnly: true, // Cookie accessible only through HTTP(S) requests
       secure: true, // Cookie sent only over HTTPS if true
       signed: true,
     })*/
-    // const cookies = req.cookies;
+    // const cookies = req.cookies; //TODO: middle ware to clear the cookies when signin
+    // TODO: utility function to clear and set cookie
     // for (let cookieName in cookies) {
     //   res.clearCookie(cookieName); // Replace '.your-domain.com' with your actual domain
     // }
