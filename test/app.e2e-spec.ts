@@ -77,7 +77,6 @@ describe('App e2e', () => {
           .withBody(dto)
           .withRequestTimeout(2 * 1000) //cold start
           .expectStatus(HttpStatus.CREATED)
-          .expectCookies('token')
           .inspect()
       })
 
@@ -137,14 +136,20 @@ describe('App e2e', () => {
           .inspect()
       })
       it('should signin', () => {
-        return pactum.spec().post('/auth/signin').withBody(dto).expectStatus(200).stores('userToken', 'access_token')
+        return pactum
+          .spec()
+          .post('/auth/signin')
+          .withBody(dto)
+          .expectStatus(200)
+          .stores('userToken', 'access_token')
+          .expectCookiesLike('token')
       })
     })
   })
 
   describe('User', () => {
     describe('Get me', () => {
-      it('should fail without header', () => {
+      it('should fail without header or cookies', () => {
         return pactum.spec().get('/users/me').expectStatus(401)
       })
 
