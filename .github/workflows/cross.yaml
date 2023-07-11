@@ -29,7 +29,7 @@ env:
 
 jobs:
   build-and-test:
-    concurrency: db-test
+#    concurrency: db-test # DB not required for unit tests
 
     timeout-minutes: 10
     runs-on: ${{ matrix.os }}
