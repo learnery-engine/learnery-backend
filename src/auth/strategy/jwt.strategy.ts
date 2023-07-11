@@ -13,7 +13,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     const mode = config.get('MODE')
     super({
       jwtFromRequest: ExtractJwt.fromExtractors([JwtStrategy.extractJWTFromCookie, ExtractJwt.fromAuthHeaderAsBearerToken()]),
-      ignoreExpiration: mode != 'production',
+      ignoreExpiration: mode == 'development' || mode == 'testing',
       secretOrKey: config.get('JWT_SECRET'),
     })
   }
