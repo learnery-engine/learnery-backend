@@ -1,4 +1,4 @@
-import { INestApplication, Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common'
+import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common'
 import { PrismaClient } from '@prisma/client'
 import { ConfigService } from '@nestjs/config'
 
@@ -15,13 +15,6 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
     console.warn(new Date(), 'disconnecting the database')
     await this.$disconnect()
     console.info(new Date(), 'disconnected database')
-  }
-  async enableShutdownHooks(app: INestApplication) {
-    console.warn('disconnecting the database')
-    this.$on('beforeExit', async () => {
-      this.$disconnect()
-      await app.close()
-    })
   }
   constructor(config: ConfigService) {
     const sslcert = '?sslcert=root.crt'
