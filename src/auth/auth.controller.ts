@@ -24,9 +24,10 @@ export class AuthController {
       secure: true, // Cookie sent only over HTTPS if true
       signed: true,
     })*/
-
-    // await res.clearCookie('token')
-
+    // const cookies = req.cookies;
+    // for (let cookieName in cookies) {
+    //   res.clearCookie(cookieName); // Replace '.your-domain.com' with your actual domain
+    // }
     res.clearCookie('token')
     res.cookie('token', token.access_token, {
       maxAge: 2 * 60 * 60,
@@ -38,3 +39,4 @@ export class AuthController {
     res.send(token)
   }
 }
+
