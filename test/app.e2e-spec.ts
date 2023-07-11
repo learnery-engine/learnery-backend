@@ -35,7 +35,7 @@ describe('App e2e', () => {
       return pactum
         .spec()
         .get(url)
-        .withRequestTimeout(10 * 1000) //due to cold start
+        .withRequestTimeout(1 * 1000) //cold start
         .expectStatus(HttpStatus.OK)
         .expectBodyContains({ message: 'app is up and running' })
         .inspect()
@@ -45,7 +45,7 @@ describe('App e2e', () => {
       return pactum
         .spec()
         .get('/health')
-        .withRequestTimeout(5 * 1000) //cold start for db
+        .withRequestTimeout(10 * 1000) //cold start for db
         .expectStatus(HttpStatus.OK)
         .expectJsonLike({
           db: {
@@ -71,7 +71,7 @@ describe('App e2e', () => {
           .spec()
           .post(`${url}/auth/signup`)
           .withBody(dto)
-          .withRequestTimeout(10 * 1000) //due to cold start
+          .withRequestTimeout(2 * 1000) //cold start
           .expectStatus(HttpStatus.CREATED)
           .inspect()
       })
