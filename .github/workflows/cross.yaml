@@ -54,11 +54,11 @@ jobs:
           architecture: ${{ matrix.architecture }}
           check-latest: true
 
-      - name: Build
-        run: pnpm run build
-
       - name: Install dependencies
         run: pnpm install
+
+      - name: Build
+        run: pnpm build
 
       - name: Write environment #TODO: add coachroach ssl certificate
         run: |
