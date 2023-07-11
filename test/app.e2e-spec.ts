@@ -38,7 +38,12 @@ describe("App e2e", () => {
     }
     describe("Sign up", () => {
       it("should signup", () => {
-        return pactum.spec().post(`${url}/auth/signup`).withBody(dto).expectStatus(HttpStatus.CREATED).inspect()
+        return pactum.spec().
+        post(`${url}/auth/signup`).
+        withBody(dto).
+        withRequestTimeout(10*1000). //due to cold start
+        expectStatus(HttpStatus.CREATED).
+        inspect()
       })
 
       it("should throw if email empty", () => {
