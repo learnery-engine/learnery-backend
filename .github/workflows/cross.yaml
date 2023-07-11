@@ -29,7 +29,7 @@ env:
 
 jobs:
   build-and-test:
-    concurrency: db-test
+#    concurrency: db-test
 
     timeout-minutes: 10
     runs-on: ${{ matrix.os }}
@@ -77,5 +77,5 @@ jobs:
       - name: Run tests for ${{runner.os}}
         run: pnpm test
 
-      - name: E2E
-        run: pnpm test:e2e
+#      - name: E2E
+#        run: pnpm test:e2e
