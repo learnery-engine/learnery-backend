@@ -40,8 +40,8 @@ model Course {
 
   topic_ids Int[]
 
-  duration_in_hours Int
-  duration_lesson   Int
+  duration_in_hours          Int
+  duration_lesson_in_minutes Int
 
   description                  String
   accepted_lesson_template_ids Int[]
@@ -49,7 +49,7 @@ model Course {
   title                        String
   objective                    String
 
-  LessonCardTemplate LessonCardTemplate @relation(fields: [lesson_card_template_id], references: [id])
+  LessonCardTemplate LessonCardTemplate @relation(fields: [lesson_card_template_id], references: [id], onDelete: Cascade)
   user               User               @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   // Topic Topic[]
