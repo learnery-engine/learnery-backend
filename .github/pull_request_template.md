@@ -9,7 +9,6 @@ For #
 [//]: # ([List down the specific changes you have made in this pull request.])
 
 - [x]
-- [x]
 
 ## Checklist
 
@@ -20,7 +19,7 @@ For #
 
 ## To-Do
 
-- [ ] 
+- [] 
 
 ## API Changes documentation
 
