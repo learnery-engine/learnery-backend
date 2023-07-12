@@ -15,11 +15,8 @@ For #
 - [x] I have followed the repository's contribution guidelines.
 - [x] I have added necessary documentation or updated existing documentation.
 - [x] My code follows the established code style and formatting of the project.
-- [] I have added suitable unit tests (if applicable).
-
-## To-Do
-
-- [] 
+- [x] I have tested my changes and they function as expected.
+- [ ] I have added suitable unit tests (if applicable).
 
 ## API Changes documentation
 
@@ -37,7 +34,11 @@ Leave the curl urls of old and new urls. Describe the change if its a bug fix.
 
 ```
 
+## To-Do
 
+<!-- [If there are any pending tasks or follow-ups, list them here.] -->
+
+- [ ]
 
 ## Additional Information
 
