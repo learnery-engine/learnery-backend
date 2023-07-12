@@ -16,12 +16,12 @@
     "prisma:test:deploy": "cp .env.test .env && prisma migrate deploy --force && rm .env",
     "prisma:local:deploy": "cp .env.local .env && prisma migrate deploy --force && rm .env",
     "prisma:deploy": "prisma migrate deploy",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
-    "test:e2e:watch": "jest --watch --no-cache --config ./test/jest-e2e.json"
+    "test": "mode=test jest",
+    "test:watch": "mode=test jest --watch",
+    "test:cov": "mode=test jest --coverage",
+    "test:debug": "mode=test node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "mode=test jest --config ./test/jest-e2e.json",
+    "test:e2e:watch": "mode=test jest --watch --no-cache --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
