@@ -49,7 +49,7 @@ model Course {
   title                        String
   objective                    String
 
-  LessonCardTemplate LessonCardTemplate @relation(fields: [lesson_card_template_id], references: [id])
+  LessonCardTemplate LessonCardTemplate @relation(fields: [lesson_card_template_id], references: [id], onDelete: Cascade)
   user               User               @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   // Topic Topic[]
