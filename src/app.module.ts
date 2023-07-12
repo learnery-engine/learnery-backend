@@ -6,6 +6,8 @@ import { AuthModule } from './auth/auth.module'
 import { PrismaModule } from './prisma/prisma.module'
 import * as Joi from 'joi'
 import { UserModule } from './user/user.module'
+import { OpenaiModule } from './openai/openai.module'
+import { PineconeModule } from './pinecone/pinecone.module'
 
 let mode = process.env.MODE
 let envFile=".env"
@@ -31,11 +33,16 @@ switch (mode){
     validationSchema: Joi.object({
       MODE: Joi.string().valid("dev", "prod", "test").default("dev"),
       PORT: Joi.number().default(1606),
-      JWT_SECRET: Joi.string()
+      JWT_SECRET: Joi.string(),
+      OPENAI_API_KEY: Joi.string().default(""), //FIXME
+      PINECONE_API_ENV: Joi.string().default(""), //FIXME
+      PINECONE_API_KEY: Joi.string().default(""),//FIXME
     }),
   }),
     AuthModule,
     UserModule,
+    OpenaiModule,
+    PineconeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
