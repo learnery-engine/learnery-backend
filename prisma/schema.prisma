@@ -15,14 +15,71 @@ datasource db {
 model User {
   id        Int      @id @default(sequence(minValue: 1)) @db.Int2
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   email String @unique
   hash  String
 
   firstName String?
   lastName  String?
+  Course    Course[]
 
   // @@id(fields: [])
   @@map("users")
+}
+
+model Course {
+  id        Int      @id @default(sequence(minValue: 1))
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user_id Int
+
+  category_id Int
+  audience_id Int
+
+  topic_ids Int[]
+
+  duration_in_hours Int
+  duration_lesson   Int
+
+  description                  String
+  accepted_lesson_template_ids Int[]
+  lesson_card_template_id      Int
+  title                        String
+  objective                    String
+
+  // LessonTemplates LessonTemplate[]
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  // Topic Topic[]
+
+  // language_id Int
+  // language Language @relation(fields: [language_id], references: [id], onDelete: Cascade)
+  @@map("courses")
+}
+
+model Audience {
+  id Int @id @default(sequence(minValue: 1))
+}
+
+model Tone {
+  id Int @id @default(sequence(minValue: 1))
+}
+
+model Topic {
+  id   Int    @id @default(sequence(minValue: 1))
+  name String
+}
+
+model LessonTemplate {
+  id Int @id @default(sequence(minValue: 1))
+}
+
+model LessonCardTemplate {
+  id Int @id @default(sequence(minValue: 1))
+}
+
+model Language {
+  id Int @id @default(sequence(minValue: 1))
 }
