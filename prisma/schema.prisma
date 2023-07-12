@@ -49,11 +49,10 @@ model Course {
   title                        String
   objective                    String
 
-  // LessonTemplates LessonTemplate[]
+  LessonCardTemplate LessonCardTemplate @relation(fields: [lesson_card_template_id], references: [id])
+  user               User               @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
-  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
   // Topic Topic[]
-
   // language_id Int
   // language Language @relation(fields: [language_id], references: [id], onDelete: Cascade)
   @@map("courses")
@@ -77,7 +76,8 @@ model LessonTemplate {
 }
 
 model LessonCardTemplate {
-  id Int @id @default(sequence(minValue: 1))
+  id     Int      @id @default(sequence(minValue: 1))
+  Course Course[]
 }
 
 model Language {
