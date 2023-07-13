@@ -32,8 +32,8 @@ COPY --from=builder /app ./
 RUN npm install -g pnpm
 
 
-CMD ["pnpm","test"]
-CMD ["pnpm","test:e2e"]
+CMD ["pnpm","test","&&","pnpm","test:e2e" ]
+
 
 ENTRYPOINT ["npx","pnpm", "run", "start:prod"]
 
