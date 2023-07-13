@@ -39,6 +39,6 @@ RUN if [ "$ENVFILE" != "" ]; then  \
     ; fi
 RUN npm install -g pnpm
 
-RUN ["pnpm","test"]
+CMD ["pnpm","test"]
 CMD ["pnpm","test:e2e"]
-ENTRYPOINT ["npx","pnpm", "run", "start:prod"]
+#ENTRYPOINT ["npx","pnpm", "run", "start:prod"]
