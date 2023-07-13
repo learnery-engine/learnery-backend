@@ -32,9 +32,10 @@ COPY --from=builder /app ./
 
 RUN echo $envfile > .env
 
-RUN if [ "$ENVFILE" != "" ]; then echo $ENVFILE > ".env"; fi
-
-RUN sed -i 's/ /\n/g' .env
+RUN if [ "$ENVFILE" != "" ]; then  \
+    echo $ENVFILE > ".env" \
+    sed -i 's/ /\n/g' .env \
+    ; fi
 
 #CMD ["pnpm","test"] TODO:
 #CMD ["pnpm","test:e2e"]
