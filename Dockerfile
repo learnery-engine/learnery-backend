@@ -31,6 +31,7 @@ COPY --from=builder /app ./
 
 RUN npm install -g pnpm
 
+
 CMD ["pnpm","test"]
 CMD ["pnpm","test:e2e"]
 
