@@ -61,10 +61,16 @@ jobs:
           source .env
 
       - name: Prisma Migration
+        continue-on-error: true
         run: |
           echo "Migrating DB"
           #npx prisma migrate reset --force
           npx prisma migrate deploy
+
+      - name: Reset the DB
+        if: ${{ failure() }}
+        run: |
+          prisma migrate dev
 
       - name: Run tests
         run: pnpm run test
