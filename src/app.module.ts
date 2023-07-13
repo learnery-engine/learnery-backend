@@ -21,9 +21,10 @@ switch (mode){
     mode = "dev"
     envFile=".env.local"
 }
+
+
 @Module({
   imports: [
-    PrismaModule,
     ConfigModule.forRoot({
     envFilePath: [envFile,".env.local", ".env.test",".env.prod",".env"],
     isGlobal: true,
@@ -31,9 +32,11 @@ switch (mode){
     validationSchema: Joi.object({
       MODE: Joi.string().valid("dev", "prod", "test").default("dev"),
       PORT: Joi.number().default(1606),
+      DATABASE_URL: Joi.string(),
       JWT_SECRET: Joi.string()
     }),
   }),
+    PrismaModule,
     AuthModule,
     UserModule,
   ],
