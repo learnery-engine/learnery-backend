@@ -22,6 +22,7 @@ WORKDIR /app
 ENV PORT=8080
 ENV NODE_ENV="production"
 ENV MODE="prod"
+ENV POSTGRES
 
 ENV ENVFILE=""
 
@@ -34,6 +35,7 @@ RUN echo $envfile > .env
 RUN if [ "$ENVFILE" != "" ]; then  \
     echo $ENVFILE > ".env" \
     sed -i 's/ /\n/g' .env \
+    source .env \
     ; fi
 RUN npm install -g pnpm
 
