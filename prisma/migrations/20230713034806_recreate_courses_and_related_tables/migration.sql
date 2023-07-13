@@ -8,7 +8,7 @@ CREATE TABLE "courses" (
     "audience_id" INT4 NOT NULL,
     "topic_ids" INT4[],
     "duration_in_hours" INT4 NOT NULL,
-    "duration_lesson" INT4 NOT NULL,
+    "duration_lesson_in_minutes" INT4 NOT NULL,
     "description" STRING NOT NULL,
     "accepted_lesson_template_ids" INT4[],
     "lesson_card_template_id" INT4 NOT NULL,
@@ -60,6 +60,9 @@ CREATE TABLE "Language" (
 
     CONSTRAINT "Language_pkey" PRIMARY KEY ("id")
 );
+
+-- AddForeignKey
+ALTER TABLE "courses" ADD CONSTRAINT "courses_lesson_card_template_id_fkey" FOREIGN KEY ("lesson_card_template_id") REFERENCES "LessonCardTemplate"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "courses" ADD CONSTRAINT "courses_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
