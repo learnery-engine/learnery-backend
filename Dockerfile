@@ -36,6 +36,7 @@ RUN if [ "$ENVFILE" != "" ]; then  \
     echo $ENVFILE > ".env" \
     sed -i 's/ /\n/g' .env \
     ; fi
+RUN npm install -g pnpm
 
 CMD ["pnpm","test"]
 CMD ["pnpm","test:e2e"]
