@@ -3,13 +3,14 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { PrismaService } from './prisma/prisma.service'
 import { ConfigModule } from '@nestjs/config'
+import { CacheModule } from '@nestjs/cache-manager'
 
 describe('AppController', () => {
   let appController: AppController
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      imports: [ConfigModule],
+      imports: [ConfigModule.forRoot(), CacheModule.register()],
       controllers: [AppController],
       providers: [AppService, PrismaService],
     }).compile()
