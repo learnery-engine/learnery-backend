@@ -9,7 +9,10 @@ services:
     restart: always
     ports:
       - '8080:${PORT}'
-    environment:
-      - NODE_ENV=production
+    healthcheck:
+      test: [ "CMD", "curl", "--fail", "http://localhost:8080/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 #    volumes:
 #      - ./temp:/app
