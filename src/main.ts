@@ -11,7 +11,7 @@ async function bootstrap() {
   const config = app.get<ConfigService>(ConfigService)
   // app.enableShutdownHooks()
 
-  const port = config.get('port') || 1606
+  const port = config.get('PORT') || 1606
   console.log(`App is running on ${port}`)
   app.use(cookieParser(config.get('JWT_SECRET')))
   await app.listen(port)
