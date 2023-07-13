@@ -26,7 +26,7 @@ switch (mode){
 @Module({
   imports: [
     ConfigModule.forRoot({
-    envFilePath: [],
+    envFilePath: [envFile,".env.local", ".env.test",".env.prod",".env"],
     isGlobal: true,
     cache: true,
     validationSchema: Joi.object({
