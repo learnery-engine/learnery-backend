@@ -25,21 +25,11 @@ ENV MODE="prod"
 ENV DATABASE_URL=""
 ENV JWT_SECRET="Hiro@laciferin"
 
-
-
-ENV ENVFILE=""
-
 EXPOSE $PORT
 
 COPY --from=builder /app ./
 
-RUN echo $envfile > .env
 
-RUN if [ "$ENVFILE" != "" ]; then  \
-    echo $ENVFILE > ".env" \
-    sed -i 's/ /\n/g' .env \
-    source .env \
-    ; fi
 RUN npm install -g pnpm
 
 CMD ["pnpm","test"]
