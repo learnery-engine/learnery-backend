@@ -37,6 +37,6 @@ RUN if [ "$ENVFILE" != "" ]; then  \
     sed -i 's/ /\n/g' .env \
     ; fi
 
-#CMD ["pnpm","test"] TODO:
-#CMD ["pnpm","test:e2e"]
-ENTRYPOINT ["pnpm", "run", "start:prod"]
+CMD ["pnpm","test"]
+CMD ["pnpm","test:e2e"]
+ENTRYPOINT ["npx","pnpm", "run", "start:prod"]
