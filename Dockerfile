@@ -29,10 +29,16 @@ EXPOSE $PORT
 
 COPY --from=builder /app ./
 
-
 RUN npm install -g pnpm
 
 CMD ["pnpm","test"]
 CMD ["pnpm","test:e2e"]
+CMD if [ "$MODE" = "test" ]; then \
+        pnpm test; \
+        pnpm test:e2e;
+    else \
+        echo "Testing bypassed for $MODE"; \
+    fi
+
 ENTRYPOINT ["npx","pnpm", "run", "start:prod"]
 
