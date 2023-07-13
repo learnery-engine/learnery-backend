@@ -16,8 +16,13 @@ RUN pnpm run build
 FROM node:19-alpine
 
 LABEL maintainer="Hiro <laciferin@gmail.com>"
+#only required for railway deployment
+ARG RAILWAY_ENVIRONMENT=""
+ENV RAILWAY_ENVIRONMENT=$RAILWAY_ENVIRONMENT
 
 WORKDIR /app
+
+RUN if [ "$RAILWAY_ENVIRONMENT" != "" ]; then echo $RAILWAY_ENVIRONMENT > ".env"; fi
 
 ENV PORT=8080
 ENV NODE_ENV="production"
