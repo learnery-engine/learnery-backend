@@ -1,15 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import { Configuration, CreateCompletionRequest, OpenAIApi } from "openai";
+import { CreateCompletionRequest, OpenAIApi } from "openai";
+import { ConfigModule } from '@nestjs/config';
 const MODULE_ID="text-davinci-003"
 const defaultTemperature=0.9
 @Injectable()
 export class OpenaiService {
     private readonly OpenaiApi:OpenAIApi
-    constructor(){
-        const configuration = new Configuration({
-            organization: process.env.example.ORGANISATION_ID,
-            apiKey: process.env.example.OPENAI_API_KEY,
-        });
+    constructor(private readonly config:ConfigModule){
+        const configuration = [{
+            organization: config.get<string>('ORGANISATION_ID'),
+            apiKey: config.get<string>('OPENAI_API_KEY'),
+        }];
+        
         this.OpenaiApi = new OpenAIApi(configuration);
     }
     async getModelAnswer(question:string,temperature?:number){

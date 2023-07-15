@@ -35,6 +35,7 @@ switch (mode){
       PORT: Joi.number().default(1606),
       JWT_SECRET: Joi.string(),
       OPENAI_API_KEY: Joi.string().default(""), //FIXME
+      ORGANISATION_ID: Joi.string().default(""), //FIXME
       PINECONE_API_ENV: Joi.string().default(""), //FIXME
       PINECONE_API_KEY: Joi.string().default(""),//FIXME
     }),
